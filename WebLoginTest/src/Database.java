@@ -15,28 +15,30 @@ public class Database {
         System.out.println(this.connection);
     }
 
-    public void insert(String userName, String userPwd) throws SQLException {
-        PreparedStatement prep = connection.prepareStatement("INSERT INTO webuser values (?,?)");
+    public void insert(String userName, String userPwd, String userImgName, String userImgPath) throws SQLException {
+        PreparedStatement prep = connection.prepareStatement("INSERT INTO userdata values (?,?,?,?)");
         prep.setString(1,userName);
         prep.setString(2,userPwd);
+        prep.setString(3, userImgName);
+        prep.setString(4, userImgPath);
         prep.executeUpdate();
     }
 
     public void delete(String userName) throws SQLException {
-        PreparedStatement prep = connection.prepareStatement("DELETE FROM webuser where user=?");
+        PreparedStatement prep = connection.prepareStatement("DELETE FROM userdata where user_name=?");
         prep.setString(1,userName);
         prep.executeUpdate();
     }
 
     public Userdata getUser(String userName) throws SQLException {
-        PreparedStatement prep = connection.prepareStatement("SELECT * FROM webuser where user=?");
+        PreparedStatement prep = connection.prepareStatement("SELECT * FROM userdata where user_name=?");
         prep.setString(1,userName);
         prep.executeQuery();
         ResultSet resultSet = prep.getResultSet();
         if(resultSet.next())
         {
-            String name = resultSet.getString("user");
-            String pwd = resultSet.getString("password");
+            String name = resultSet.getString("user_name");
+            String pwd = resultSet.getString("user_password");
             return new Userdata(name, pwd);
         }
         else
@@ -47,12 +49,12 @@ public class Database {
 
     public ArrayList<Userdata> getAllUser() throws SQLException {
         ArrayList<Userdata> userlist = new ArrayList<Userdata>();
-        PreparedStatement prep = connection.prepareStatement("SELECT * FROM webuser");
+        PreparedStatement prep = connection.prepareStatement("SELECT * FROM userdata");
         prep.executeQuery();
         ResultSet resultSet = prep.getResultSet();
         while (resultSet.next()) {
-            String name = resultSet.getString("user");
-            String pwd = resultSet.getString("password");
+            String name = resultSet.getString("user_name");
+            String pwd = resultSet.getString("user_password");
             userlist.add(new Userdata(name, pwd));
         }
         return userlist;
@@ -63,13 +65,13 @@ public class Database {
     }
 
     public Userdata check(String name, String userpwd) throws SQLException {
-        PreparedStatement prep = connection.prepareStatement("SELECT password FROM webuser WHERE user=?");
+        PreparedStatement prep = connection.prepareStatement("SELECT user_password FROM userdata WHERE user_name=?");
         prep.setString(1,name);
         prep.executeQuery();
         ResultSet resultSet = prep.getResultSet();
         if(resultSet.next())
         {
-            String pwd = resultSet.getString("password");
+            String pwd = resultSet.getString("user_password");
             if(userpwd.equals(pwd))
             {
                 return getUser(name);
