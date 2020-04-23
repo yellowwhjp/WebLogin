@@ -12,6 +12,8 @@
     Username: <input type="text" name="userName" id="checkn"><br><br>
     Password: <input type="password" name="Pwd" id="checkp"><br><br>
     Password again: <input type="password" name="Pwd2" id="checkp2"><br><br>
+
+
     <input type="submit" value="Register">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
     </div>
 </form>
@@ -33,5 +35,19 @@
             return false;
         }else return true;
     }
+    <%--    
+    var fileObj = '';
+    var imgData = '';
+    $("#checkimg").change(function(){
+    	var reader = new FileReader();
+    	fileObj = $(this)[0].file[0];
+    	reader.readAsDataURL(fileObj);
+    	reader.onload = function(){
+    		imgData = reader.result;
+    		$("#showImg").attr("src", imdData);
+    		$("#showImg").show();
+    	}
+    });
+    --%>
 </script>
 </html>
