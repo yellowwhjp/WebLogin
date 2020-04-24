@@ -15,12 +15,11 @@ public class Database {
         System.out.println(this.connection);
     }
 
-    public void insert(String userName, String userPwd, String userImgName, String userImgPath) throws SQLException {
-        PreparedStatement prep = connection.prepareStatement("INSERT INTO userdata values (?,?,?,?)");
+    public void insert(String userName, String userPwd, String userImgName) throws SQLException {
+        PreparedStatement prep = connection.prepareStatement("INSERT INTO userdata values (?,?,?)");
         prep.setString(1,userName);
         prep.setString(2,userPwd);
         prep.setString(3, userImgName);
-        prep.setString(4, userImgPath);
         prep.executeUpdate();
     }
 

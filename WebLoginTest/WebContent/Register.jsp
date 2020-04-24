@@ -7,12 +7,12 @@
     <title>Register Page</title>
 </head>
 <body>
-<form method="post" action="RegisterServlet" onsubmit="return check()"><br><br><br><br><br>
+<form method="post" action="RegisterServlet" onsubmit="return (check()&&checkfile())" enctype="multipart/form-data"><br><br><br><br><br>
     <div align="center">
     Username: <input type="text" name="userName" id="checkn"><br><br>
     Password: <input type="password" name="Pwd" id="checkp"><br><br>
     Password again: <input type="password" name="Pwd2" id="checkp2"><br><br>
-
+	Image:<input type="file" name="file" id="checkimg"><br><br>
 
     <input type="submit" value="Register">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
     </div>
@@ -34,6 +34,16 @@
             alert('password is empty');
             return false;
         }else return true;
+    }
+    function checkfile(){
+    	var img_id = document.getElementById("checkimg").value;
+    	var index = img_id.indexOf(".");
+    	img_id = img_id.substring(index);
+    	if(img_id!=".bmp"&&img_id!=".png"&&img_id!=".gif"&&img_id!=".jpg"&&img_id!=".jpeg"){
+    		alert('not pic');
+    		return false;
+    	}
+    	else return true;
     }
     <%--    
     var fileObj = '';
