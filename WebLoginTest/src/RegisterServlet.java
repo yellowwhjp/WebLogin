@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.servlet.http.Part;
 
@@ -47,11 +49,8 @@ public class RegisterServlet extends HttpServlet {
     		file.mkdirs();    		
     	}
     	
-    	String username = new String();
     	String userpara = new String();
-    	String pwd1 = new String();
     	String pwdpara = new String();
-    	String pwd2 = new String();
     	String pwdpara2 = new String();
     	String picname = new String();    	
     	
@@ -65,23 +64,19 @@ public class RegisterServlet extends HttpServlet {
     		System.out.println(name);
     		if(filename!=null)
     		{
-    			part.write(realPath+File.separator+filename.replace("C:", ""));
+    			String strtime = (new SimpleDateFormat("yyyyMMddHHmmssSSS")).format(new Date());
+    			part.write(realPath+File.separator+strtime+filename.replace("C:", ""));	
     			picname = filename;
     		}
     		else
     		{
-    			System.out.println("1111111111111111");
     			if(name.equals("userName")) {
-    				username = part.getName();
-    				userpara = request.getParameter(username);
-//    				System.out.println(userpara);
+    				userpara = request.getParameter(name);
     			}else if(name.equals("Pwd"))
     			{
-    				pwd1 = part.getName();
-    				pwdpara = request.getParameter(pwd1);
+    				pwdpara = request.getParameter(name);
     			}else if(name.equals("Pwd2")) {
-    				pwd2 = part.getName();
-    				pwdpara2 = request.getParameter(pwd2);
+    				pwdpara2 = request.getParameter(name);
     			}
     		}
     	}
@@ -89,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
           {
               try {
                   Database database = new Database("root","a9988765");
-                  database.insert(username, pwdpara, picname);
+                  database.insert(userpara, pwdpara, picname);
                   database.close();
                   printWriter.write("Register Successfully");
               } catch (ClassNotFoundException e) {
@@ -106,10 +101,6 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    	request.setCharacterEncoding("utf-8");
-//    	response.setContentType("text/html;charset=utf-8");
-    	
-    	
     	doPost(request,response);
     }
 }
