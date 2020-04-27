@@ -17,8 +17,8 @@ public class Database {
 
     public void insert(String userName, String userPwd, String userImgName) throws SQLException {
         PreparedStatement prep = connection.prepareStatement("INSERT INTO userdata values (?,?,?)");
-        prep.setString(1,userName);
-        prep.setString(2,userPwd);
+        prep.setString(1, userName);
+        prep.setString(2, userPwd);
         prep.setString(3, userImgName);
         prep.executeUpdate();
     }
