@@ -8,7 +8,6 @@ public class Database {
     public Database(String name, String password) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         this.connection =  DriverManager.getConnection("jdbc:mysql://localhost/logintest?serverTimezone=JST",name,password);
-
     }
 
     public void showConnect(){

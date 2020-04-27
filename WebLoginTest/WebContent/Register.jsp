@@ -5,15 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Register Page</title>
+<style>
+	.div1{border:2px solid #000;padding:10px;width:400}
+</style>
 </head>
 <body>
-<form method="post" action="RegisterServlet" onsubmit="return (check()&&checkfile())" enctype="multipart/form-data"><br><br><br><br><br>
-    <div align="center">
+<form method="post" action="RegisterServlet" onsubmit="return (check()&&checkfile())" enctype="multipart/form-data"><br>
+    <div align="center" class="div1">
     Username: <input type="text" name="userName" id="checkn"><br><br>
     Password: <input type="password" name="Pwd" id="checkp"><br><br>
     Password again: <input type="password" name="Pwd2" id="checkp2"><br><br>
 	Image:<input type="file" name="file" id="checkimg"><br><br>
-
     <input type="submit" value="Register">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
     </div>
 </form>
