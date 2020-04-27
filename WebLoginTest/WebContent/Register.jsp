@@ -28,14 +28,15 @@
         if(checkname==''){
             alert('name is empty');
             return false;
-        }else if(checkpwd=='')
-        {
+        }else if(checkpwd==''){
             alert('password is empty');
             return false;
         }else if(checkpwd2==''){
             alert('password is empty');
             return false;
-        }else return true;
+        }else{
+        	return true;
+        }
     }
     function checkfile(){
     	var img_id = document.getElementById("checkimg").value;
