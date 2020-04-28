@@ -14,10 +14,10 @@
       <form action="Login.jsp" method="get">
         <button type="submit" style="width:150px;">Login</button>
       </form><br>
-      <form action="Register.jsp" method="get">
-        <button type="submit" style="width:150px;">Register</button>
-      </form>
-<%--      <button onclick="indow.location.href='/Register.jsp'">Register</button>--%>
+		<form action="Register.jsp" method="get">
+			<button type="submit" style="width: 150px;">Register</button>
+		</form>
+		<%--      <button onclick="indow.location.href='/Register.jsp'">Register</button>--%>
     </div>
   </body>
 </html>

@@ -10,13 +10,15 @@
 	</style>
 </head>
 <body>
-<form action="LoginServlet" method="post" onsubmit="return check()"><br>
-    <div align="center" class="div1">
-    username: <input type="text" name="userName" id="checkn" ><br><br>
-    password: <input type="password" name="Pwd" id="checkp" ><br><br>
-    <input type="submit" value="Login" >&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset">
-    </div>
-</form>
+	<form action="LoginServlet" method="post" onsubmit="return check()">
+		<br>
+		<div align="center" class="div1">
+			username: <input type="text" name="userName" id="checkn"><br>
+			<br> password: <input type="password" name="Pwd" id="checkp"><br>
+			<br> <input type="submit" value="Login">&nbsp;&nbsp;&nbsp;<input
+				type="reset" value="Reset">
+		</div>
+	</form>
 </body>
     <script type="text/javascript" language="JavaScript" >
         function check() {

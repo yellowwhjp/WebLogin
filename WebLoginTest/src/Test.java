@@ -2,9 +2,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Test {
-    public static void main(String args[]) throws SQLException, ClassNotFoundException {
-        Database database = new Database("root","a9988765");
-        database.showConnect();
+	public static void main(String args[]) throws SQLException, ClassNotFoundException {
+		Database database = new Database("root", "a9988765");
+		database.showConnect();
 //        Userdata userdata = database.check("sdddd1","1");
 //        if(userdata==null)
 //        {
@@ -14,8 +14,8 @@ public class Test {
 //            System.out.println("Welcome "+userdata.getUserName());
 //        }
 //        database.insert("sdddd1","1","imgname","imgpath");
-        Userdata userdata1 = database.getUser("sdddd1");
-        System.out.println(userdata1.getUserName());
+		Userdata userdata1 = database.getUser("sdddd1");
+		System.out.println(userdata1.getUserName());
 //        database.insert("sdddd2","2");
 //        database.insert("sdddd3","3");
 //        database.insert("sdddd4","4");
@@ -32,5 +32,5 @@ public class Test {
 //        {
 //            System.out.println(each.getUserName()+" "+each.getUserPwd());
 //        }
-    }
+	}
 }
